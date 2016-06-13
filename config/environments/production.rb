@@ -95,5 +95,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   require 'active_support/core_ext/numeric/bytes'
-  config.logger = Logger.new(paths['log'].first, 2, 10.megabytes)
+  # config.logger = Logger.new(paths['log'].first, 2, 10.megabytes)
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get((ENV['LOG_LEVEL'] || 'INFO').upcase)
 end
