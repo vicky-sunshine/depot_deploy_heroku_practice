@@ -1,11 +1,3 @@
-#---
-# Excerpted from "Agile Web Development with Rails 5",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material,
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose.
-# Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
-#---
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -34,10 +26,9 @@ ActiveRecord::Schema.define(version: 20160330000009) do
     t.integer  "quantity",   default: 1
     t.decimal  "price"
     t.integer  "order_id"
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
   end
-
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"
